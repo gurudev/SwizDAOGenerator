@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark" 
+			   minWidth="955" minHeight="600"
+			   xmlns:mediators="@namespace@.views.mediators.*" 
+			   xmlns:swiz='*' xmlns:view="@namespace@.view.*" creationComplete="creationCompleteHandler(event)">
+	<fx:Style source="Style.css" /> 
+	<fx:Declarations>
+		<swiz:Context dispatcher="{ this }"/>
+	</fx:Declarations>  
+	<mediators:LoginViewMediator id="login" skinClass="@namespace@.views.LoginSkinView" 
+								 width="100%" height="100%" includeIn="LoginState"/> 
+	// todo: add view
+</s:Application>
