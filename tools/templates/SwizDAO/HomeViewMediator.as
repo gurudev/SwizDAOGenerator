@@ -66,7 +66,7 @@ package @namespace@.views.mediators
 		 */
 		override protected function init():void {
 			super.init();  
-			viewIndex = Utils.@upperCaseGesture@_INDEX;
+			viewState = Utils.@upperCaseGesture@_INDEX;
 			 
 		} 
 		protected function setDataProviders():void {	    

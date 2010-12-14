@@ -3,12 +3,12 @@
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   minWidth="955" minHeight="600"
 			   xmlns:mediators="@namespace@.views.mediators.*" 
-			   xmlns:swiz='*' xmlns:view="@namespace@.view.*" creationComplete="creationCompleteHandler(event)">
+			   xmlns:swiz='*' xmlns:view="@namespace@.view.*">
 	<fx:Style source="Style.css" /> 
 	<fx:Declarations>
 		<swiz:Context dispatcher="{ this }"/>
 	</fx:Declarations>  
-	<mediators:LoginViewMediator id="login" skinClass="@namespace@.views.LoginSkinView" 
-								 width="100%" height="100%" includeIn="LoginState"/> 
+	<mediators:@gesture@ViewMediator skinClass="@namespace@.views.@gesture@SkinView" 
+								 width="100%" height="100%"/> 
 	// todo: add view
 </s:Application>

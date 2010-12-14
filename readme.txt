@@ -3,18 +3,10 @@ Lightweight Ant script extensions generator for SwizDAO implementation of MVCs b
 Features:
 
 1. SwizDAO Folder structure.
-2. SwizDAO libraries and source code
-5. Automatic ThunderBolt integration to each user-gesture.
-6. Creating VO.
-7. Add event command user gesture
-8. Add Startup command
-9. Add main class and Context class
-10. Create Model class
-11. Create Service class
-12. Create view and mediator combo
-13. Move libraries and source code to project lib
-14. Passive Presentation Model implementation
-15. AS Signals integration
+2. SwizDAO libraries and source code 
+3. SwizDAO MainClass and files    
+4. Creating VO. 
+5. Create view and mediator combo 
 
 In case you are running into errors:
 You need to ensure you copy the following plugins:
