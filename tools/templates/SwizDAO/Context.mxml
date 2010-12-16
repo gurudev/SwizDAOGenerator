@@ -5,25 +5,25 @@
 		   xmlns:Swiz="org.swizframework.core.mxml.*"
 		   xmlns:dao="com.adams.swizdao.dao.*"
 		   xmlns:collections="com.adams.swizdao.model.collections.*"
-		   xmlns:service="com.adams.swizdao.service.*"
 		   xmlns:vo="com.adams.swizdao.model.vo.*"
 		   xmlns:response="com.adams.swizdao.response.*"
 		   xmlns:signals="com.adams.swizdao.signals.*" 
 		   xmlns:processors="com.foomonger.swizframework.processors.*"
 		   xmlns:controller="com.adams.swizdao.controller.*"
 		   xmlns:storage="org.swizframework.storage.*" 
-		   xmlns:mediators="@namespace@.views.mediators.*"
-		   xmlns:processor="@namespace@.model.processor.*"  
+		   xmlns:mediators="com.adams.cambook.views.mediators.*"
+		   xmlns:processor="com.adams.cambook.model.processor.*"  
 		   xmlns:services="org.swizframework.utils.services.*" 
 		   xmlns:mediateview="com.briankotek.mediateview.*" 
 		   xmlns:formprocessors="com.nsdevaraj.swiz.processors.*"
-		   activate="initializeHandler(event)" xmlns:util="@namespace@.util.*">
+		   activate="initializeHandler(event)" xmlns:util="com.adams.cambook.util.*" 
+		   xmlns:cambook="com.adams.cambook.*" xmlns:service="com.adams.cambook.service.*">
 	
 	<fx:Script>
 		<![CDATA[  
-			import @namespace@.model.AbstractDAO;
-			import @namespace@.model.vo.*;
-			import @namespace@.util.Utils;
+			import com.adams.cambook.model.AbstractDAO;
+			import com.adams.cambook.model.vo.*;
+			import com.adams.cambook.util.Utils;
 			
 			import mx.logging.LogEventLevel;
 			import mx.logging.targets.TraceTarget;
@@ -49,7 +49,7 @@
 	</fx:Declarations>
 	
 	<Swiz:config>
-		<swiz:SwizConfig viewPackages="@namespace@.views.*" tearDownEventType="{ Event.REMOVED_FROM_STAGE }"/>
+		<swiz:SwizConfig viewPackages="com.adams.cambook.views.*" tearDownEventType="{ Event.REMOVED_FROM_STAGE }"/>
 	</Swiz:config>
 	
 	<Swiz:customProcessors>
@@ -74,25 +74,25 @@
 			<!-- Signals End -->
 			
 			<!-- Response Begin -->
-			<response:AbstractResult/>
+			<service:ServiceResult/>
 			<response:SignalSequence/>
 			<!-- Response End --> 
 			
 			<!-- Processors Begin--> 
-			// todo: add processor
 			<processor:PersonProcessor id="personProcessor"/> 
+			<processor:NoteProcessor id="notesProcessor"/> 
 			<!-- Processors End -->  
 			
 			<!-- DAO Begin -->  
-			// todo: add prototype
 			<swiz:Prototype name="{Utils.PERSONDAO}" constructorArguments="{[Utils.PERSONKEY,Persons,personProcessor,Utils.PERSONDAO]}" type="{AbstractDAO}" singleton="true"/>
+			<swiz:Prototype name="{Utils.NOTEDAO}" constructorArguments="{[Utils.NOTEKEY,Notes,notesProcessor,Utils.NOTEDAO]}" type="{AbstractDAO}" singleton="true"/>
 			<dao:PagingDAO/>
 		    <!-- DAO End --> 
 			
 			<!-- Controller Begin -->
 			<vo:CurrentInstance/> 
 			<controller:ServiceController/>
-			<controller:LoadConfigCommand />
+			<cambook:BootStrapCommand/>
 			<!-- Controller End --> 
 			
 		</swiz:BeanProvider>
