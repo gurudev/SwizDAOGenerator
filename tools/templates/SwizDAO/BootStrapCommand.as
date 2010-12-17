@@ -14,6 +14,7 @@ package @namespace@
 	
 	import com.adams.swizdao.controller.ServiceController;
 	import com.adams.swizdao.model.vo.CurrentInstance;
+	import @namespace@.model.vo.MapConfigVO;
 	
 	import flash.events.StatusEvent;
 	
@@ -41,6 +42,7 @@ package @namespace@
 			currentInstance.config.serverLocation =FlexGlobals.topLevelApplication.parameters.serverLocation;
 			//'http://'+URLUtil.getServerNameWithPort(FlexGlobals.topLevelApplication.url)+"/webapp/" 
 			service.serverLocation = currentInstance.config.serverLocation;
+			currentInstance.mapConfig =new MapConfigVO();
 			service.assignChannelSets();
 			if(!service.consumer.subscribed)service.consumer.subscribe();
 		} 

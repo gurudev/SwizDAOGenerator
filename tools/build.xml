@@ -8,7 +8,7 @@
 	<property file="config/log.properties" />
 	<target name="main" depends="create-SwizDAO,create-value-object,create-view-mediator" />
 	 	  
- 	<!-- create default SwizDAO directories , 	create-view-mediator-->
+ 	<!-- create-SwizDAO,create-value-object,create-view-mediator-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
 		<echo>${log.create.SwizDAO.directories.message}</echo>
         <mkdir dir="${project.url}/${model.dir}" />
@@ -104,6 +104,21 @@
 		<echo>Copy ${SwizDAO.templates.dir}/AbstractDAO.as</echo>
 		<copy file="${SwizDAO.templates.dir}/AbstractDAO.as"
 			  tofile="${project.url}/${model.dir}/AbstractDAO.as"
+			  overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="project.name" value="${project.name}" />
+	           		<token key="namespace" value="${namespace}" />
+					<token key="year" value="${year}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+		<echo>Copy ${SwizDAO.templates.dir}/MapConfigVO.as</echo>
+		<copy file="${SwizDAO.templates.dir}/MapConfigVO.as"
+			  tofile="${project.url}/${model.dir}/${vo.dir}/MapConfigVO.as"
 			  overwrite="${overwrite.files}" >
 	        <filterchain>
 	           <replacetokens>
