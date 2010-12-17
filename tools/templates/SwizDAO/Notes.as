@@ -18,19 +18,19 @@ package @namespace@.model.vo
 	[RemoteClass(alias='@namespace@.dao.entities.@gesture@')]
 	public class @gesture@ extends AbstractVO
 	{
-		private var _@gesture@Id:int; 
+		private var _@lowerCaseGesture@Id:int; 
 		public function @gesture@()
 		{
 			super();
 		}
-		public function get @gesture@Id():int
+		public function get @lowerCaseGesture@Id():int
 		{
-			return _@gesture@Id;
+			return _@lowerCaseGesture@Id;
 		}
 
-		public function set @gesture@Id(value:int):void
+		public function set @lowerCaseGesture@Id(value:int):void
 		{
-			_@gesture@Id = value;
+			_@lowerCaseGesture@Id = value;
 		}
 
 	}

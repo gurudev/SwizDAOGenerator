@@ -1,4 +1,15 @@
-package com.adams.cambook.service
+/*
+
+Copyright (c) @year@ @company.name@, All Rights Reserved 
+
+@author   @author.name@
+@contact  @author.email@
+@project  @project.name@
+
+@internal 
+
+*/
+package @namespace@.service
 {
 	import com.adams.swizdao.response.AbstractResult; 
 	import com.adams.swizdao.model.collections.ICollection;

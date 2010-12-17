@@ -8,7 +8,5 @@
 	<fx:Declarations>
 		<swiz:Context dispatcher="{ this }"/>
 	</fx:Declarations>  
-	<mediators:@gesture@ViewMediator skinClass="@namespace@.views.@gesture@SkinView" 
-								 width="100%" height="100%"/> 
-	// todo: add view
+	
 </s:Application>

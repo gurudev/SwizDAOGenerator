@@ -9,18 +9,15 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package com.adams.cambook.util
+package @namespace@.util
 {  
-	import com.adams.cambook.model.AbstractDAO;
+	import @namespace@.model.AbstractDAO;
 	public class Utils
-	{  	 
-		public static const @upperCaseGesture@_INDEX:String=@gesture@;  
+	{  	  
 		// todo: add view index
-		
-		public static const @upperCaseGesture@KEY 	:String="@lowerCaseGesture@Id"; 
+		 
 		// todo: add key
-		
-		public static const @upperCaseGesture@DAO 	:String="@lowerCaseGesture@DAO"; 
+		 
 		// todo: add dao
 	}
 }
