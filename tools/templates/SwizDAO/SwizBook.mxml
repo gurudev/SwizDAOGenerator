@@ -2,11 +2,13 @@
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
 			   minWidth="955" minHeight="600"
-			   xmlns:mediators="@namespace@.views.mediators.*" 
-			   xmlns:swiz='*' xmlns:view="@namespace@.view.*">
+			   xmlns:mediators="@namespace@.@view.dir@.mediators.*" 
+			   xmlns:swiz='*' xmlns:view="@namespace@.@view.dir@.*">
 	<fx:Style source="Style.css" /> 
 	<fx:Declarations>
 		<swiz:Context dispatcher="{ this }"/>
 	</fx:Declarations>  
+	<!-- // View Begin -->
+	<!-- View End -->  
 	
 </s:Application>

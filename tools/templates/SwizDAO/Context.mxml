@@ -11,7 +11,7 @@
 		   xmlns:processors="com.foomonger.swizframework.processors.*"
 		   xmlns:controller="com.adams.swizdao.controller.*"
 		   xmlns:storage="org.swizframework.storage.*" 
-		   xmlns:mediators="@namespace@.views.mediators.*"
+		   xmlns:mediators="@namespace@.@view.dir@.mediators.*"
 		   xmlns:processor="@namespace@.model.processor.*"  
 		   xmlns:services="org.swizframework.utils.services.*" 
 		   xmlns:mediateview="com.briankotek.mediateview.*" 
@@ -49,7 +49,7 @@
 	</fx:Declarations>
 	
 	<Swiz:config>
-		<swiz:SwizConfig viewPackages="@namespace@.views.*" tearDownEventType="{ Event.REMOVED_FROM_STAGE }"/>
+		<swiz:SwizConfig viewPackages="@namespace@.@view.dir@.*" tearDownEventType="{ Event.REMOVED_FROM_STAGE }"/>
 	</Swiz:config>
 	
 	<Swiz:customProcessors>

@@ -9,15 +9,12 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package @namespace@.views.mediators
-{
+package @namespace@.@view.dir@.mediators
+{ 
 	import @namespace@.model.AbstractDAO;
-	import @namespace@.model.processor.PersonProcessor;
 	import @namespace@.model.vo.*;
-	import @namespace@.util.GetVOObjectUtil;
-	import @namespace@.util.RendererUtil;
 	import @namespace@.util.Utils;
-	import @namespace@.views.HomeSkinView; 
+	import @namespace@.@view.dir@.@gesture@SkinView;
 	
 	import com.adams.swizdao.dao.PagingDAO;
 	import com.adams.swizdao.model.vo.*;
@@ -27,7 +24,10 @@ package @namespace@.views.mediators
 	import com.adams.swizdao.util.Description;
 	import com.adams.swizdao.util.ObjectUtils;
 	import com.adams.swizdao.views.components.NativeList;
-	import com.adams.swizdao.views.mediators.AbstractViewMediator; 
+	import com.adams.swizdao.views.mediators.AbstractViewMediator;
+	
+	import flash.events.Event;
+	
 	
 
 	public class @gesture@ViewMediator extends AbstractViewMediator
@@ -99,7 +99,7 @@ package @namespace@.views.mediators
 		 * as removed from stage event should not be called on these system events
 		 */		
 		override protected function gcCleanup( event:Event ):void {
-			if( viewIndex != Utils.@upperCaseGesture@_INDEX ) {
+			if( viewState != Utils.@upperCaseGesture@_INDEX ) {
 				cleanup( event );	
 			}
 		}

@@ -49,6 +49,7 @@
 					<token key="lowerCaseProject" value="${lowerCaseProject}" />
 	           		<token key="namespace" value="${namespace}" />
 					<token key="year" value="${year}" />
+	           		<token key="view.dir" value="${view.dir}" />
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
@@ -64,6 +65,7 @@
 					<token key="project.name" value="${project.name}" />
 	           		<token key="namespace" value="${namespace}" />
 					<token key="year" value="${year}" />
+	           		<token key="view.dir" value="${view.dir}" />
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
@@ -224,7 +226,7 @@
 	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
 
 	    <copy file="${SwizDAO.templates.dir}/HomeViewMediator.as"
-	    	tofile="${project.url}/${view.dir}/mediators/${gesture}Mediator.as" overwrite="${overwrite.files}" >
+	    	tofile="${project.url}/${view.dir}/mediators/${gesture}ViewMediator.as" overwrite="${overwrite.files}" >
 	        <filterchain>
 	           <replacetokens>
 						<token key="author.name" value="${author.name}" />
@@ -261,6 +263,11 @@
 			     value="// todo: add dao${line.separator}
 						public static const ${upperCaseGesture}_INDEX:String='${gesture}';"
 			     /> 
+		<replace file="${project.main.url}/Main.mxml"
+					     token="// View Begin -->"
+					     value="// View Begin -->${line.separator}
+			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' width='100%' height='100%'/&gt;"
+					     />  
 	</target> 
     <!-- private -->
 	<scriptdef name="convertToUpperCase" language="javascript" >
