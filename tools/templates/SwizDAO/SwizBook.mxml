@@ -8,6 +8,10 @@
 	<fx:Declarations>
 		<swiz:Context dispatcher="{ this }"/>
 	</fx:Declarations>  
+	<s:states>
+		<!-- // State Begin -->
+		<!-- State End -->  
+	</s:states> 
 	<!-- // View Begin -->
 	<!-- View End -->  
 	
