@@ -6,7 +6,7 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-SwizDAO,create-signal-command" />
+	<target name="main" depends="create-view-mediator" />
 	 	  
  	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
@@ -293,7 +293,7 @@
 			     value="// todo: add dao${line.separator}
 						public static const ${upperCaseGesture}_INDEX:String='${gesture}';"
 			     /> 
-		<replace file="${project.main.url}/Main.mxml"
+		<replace file="${project.main.url}/${project.dir}.mxml"
 					     token="// View Begin -->"
 					     value="// View Begin -->${line.separator}
 			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' width='100%' height='100%'/&gt;"
