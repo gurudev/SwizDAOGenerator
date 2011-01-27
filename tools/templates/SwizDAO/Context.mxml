@@ -17,7 +17,8 @@
 		   xmlns:mediateview="com.briankotek.mediateview.*" 
 		   xmlns:formprocessors="com.nsdevaraj.swiz.processors.*"
 		   activate="initializeHandler(event)" xmlns:util="@namespace@.util.*" 
-		   xmlns:@lowerCaseProject@="@namespace@.*" xmlns:service="@namespace@.service.*">
+		   xmlns:@lowerCaseProject@="@namespace@.*" xmlns:service="@namespace@.service.*"
+		   xmlns:control="@namespace@.control.*" xmlns:signal="@namespace@.signal.*">
 	
 	<fx:Script>
 		<![CDATA[  
@@ -53,7 +54,7 @@
 	</Swiz:config>
 	
 	<Swiz:customProcessors>
-		<processors:MediateSignalProcessor id="signalProcessor" signalPackages="com.adams.swizdao.signals" strictArgumentTypes="true"/>		
+		<processors:MediateSignalProcessor id="signalProcessor" signalPackages="{['com.adams.swizdao.signals','@namespace@.signal']}" strictArgumentTypes="true"/>		
  		<mediateview:MediateViewProcessor/>
 		<formprocessors:FormProcessor/>
 		<formprocessors:RandomProcessor/>
@@ -67,7 +68,7 @@
 			<services:ServiceHelper swiz="{ this }" />
 			<!-- Service End -->
 			
-			<!-- Signals Begin -->
+			<!-- // Signals Begin -->
 			<signals:AbstractSignal/>
 			<signals:ResultSignal/>
 			<signals:PushRefreshSignal/>
@@ -88,6 +89,7 @@
 			<!-- Controller Begin -->
 			<vo:CurrentInstance/> 
 			<controller:ServiceController/>
+			<control:SignalsCommand/>
 			<@lowerCaseProject@:BootStrapCommand/>
 			<!-- Controller End --> 
 			

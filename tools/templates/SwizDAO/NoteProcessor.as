@@ -18,10 +18,7 @@ package @namespace@.model.processor
 	import com.adams.swizdao.model.processor.AbstractProcessor;
 
 	public class @gesture@Processor extends AbstractProcessor
-	{  
-		[Inject("@lowerCaseGesture@DAO")]
-		public var @lowerCaseGesture@DAO:AbstractDAO;
-
+	{   
 		public function @gesture@Processor()
 		{
 			super();
@@ -30,8 +27,8 @@ package @namespace@.model.processor
 		override public function processVO(vo:IValueObject):void
 		{
 			if(!vo.processed){
-				super.processVO(vo);
 				var @lowerCaseGesture@vo:@gesture@ = vo as @gesture@;
+				super.processVO(vo);
 			}
 		}
 	}

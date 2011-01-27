@@ -11,9 +11,8 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 */
 package @namespace@.model.vo
 {
-	import mx.collections.ArrayCollection;
 	import com.adams.swizdao.model.vo.AbstractVO;
-
+	import mx.collections.ArrayCollection;
 	[Bindable]
 	[RemoteClass(alias='@namespace@.dao.entities.@gesture@')]
 	public class @gesture@ extends AbstractVO

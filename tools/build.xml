@@ -6,9 +6,9 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-SwizDAO,create-value-object,create-view-mediator" />
+	<target name="main" depends="create-SwizDAO,create-signal-command" />
 	 	  
- 	<!-- create-SwizDAO,create-value-object,create-view-mediator-->
+ 	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
 		<echo>${log.create.SwizDAO.directories.message}</echo>
         <mkdir dir="${project.url}/${model.dir}" />
@@ -55,8 +55,8 @@
 	    </copy>
 		<echo>Copy ${SwizDAO.templates.dir}/Main.mxml</echo>
 		<copy file="${SwizDAO.templates.dir}/SwizBook.mxml"
-			  tofile="${project.main.url}/Main.mxml"
-			  overwrite="${overwrite.files}" >
+			  tofile="${project.main.url}/${project.dir}.mxml"
+			  overwrite="true" >
 	        <filterchain>
 	           <replacetokens>
 					<token key="author.name" value="${author.name}" />
@@ -84,7 +84,22 @@
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
-		
+		<echo>Copy ${SwizDAO.control.dir}/SignalsCommand.as</echo>
+				<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
+					  tofile="${project.url}/control/SignalsCommand.as"
+					  overwrite="${overwrite.files}" >
+			        <filterchain>
+			           <replacetokens>
+							<token key="author.name" value="${author.name}" />
+							<token key="author.email" value="${author.email}" />
+							<token key="company.name" value="${company.name}" />
+							<token key="project.name" value="${project.name}" />
+			           		<token key="namespace" value="${namespace}" />
+							<token key="year" value="${year}" />
+			            </replacetokens>
+			        </filterchain>
+			    </copy>
+				
 		<echo>Copy ${SwizDAO.templates.dir}/NativeMessenger.as</echo>
 		<copy file="${SwizDAO.templates.dir}/NativeMessenger.as"
 			  tofile="${project.url}/util/NativeMessenger.as"
@@ -232,7 +247,7 @@
 						public static const ${upperCaseGesture}DAO 	:String='${lowerCaseGesture}DAO'; "
 			     /> 
 	</target>
-
+	
 	<!-- create view-mediator class -->
 	<target name="create-view-mediator" >
 		<echo>${log.view.mediator.message}</echo>
@@ -284,6 +299,53 @@
 			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' width='100%' height='100%'/&gt;"
 					     />  
 	</target> 
+	
+	<!-- create signal-command class -->
+		<target name="create-signal-command" >
+			<echo>${log.view.mediator.message}</echo>
+
+		    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
+		    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
+
+		    <copy file="${SwizDAO.templates.dir}/LoginSignal.as"
+		    	tofile="${project.url}/signal/${gesture}Signal.as" overwrite="${overwrite.files}" >
+		        <filterchain>
+		           <replacetokens>
+							<token key="author.name" value="${author.name}" />
+							<token key="author.email" value="${author.email}" />
+							<token key="company.name" value="${company.name}" />
+							<token key="project.name" value="${project.name}" />
+							<token key="namespace" value="${namespace}" />
+							<token key="year" value="${year}" />
+							<token key="gesture" value="${gesture}" />
+	                    	<token key="view.dir" value="${view.dir}" />
+	        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
+	        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
+		            </replacetokens>
+		        </filterchain>
+		    </copy>
+ 
+			<replace file="${project.url}/control/SignalsCommand.as"
+				     token="// todo: add listener"
+				     value="// todo: add listener${line.separator}
+							/**${line.separator}
+							 * Whenever an ${gesture}Signal is dispatched.${line.separator}
+							 * MediateSignal initates this ${lowerCaseGesture}Action to perform control Actions${line.separator}
+							 * The invoke functions to perform control functions${line.separator}
+							 */${line.separator}
+							[MediateSignal(type='${gesture}Signal')]${line.separator}
+							public function ${lowerCaseGesture}Action():void {${line.separator}
+								${line.separator}
+							}${line.separator}"
+				     /> 
+			<replace file="${project.main.url}/Context.mxml"
+						     token="// Signals Begin -->"
+						     value="// Signals Begin -->${line.separator}
+										&lt;signal:${gesture}Signal/&gt;"
+						     />  
+		</target> 
+		
+	
     <!-- private -->
 	<scriptdef name="convertToUpperCase" language="javascript" >
 		<attribute name="property" />
