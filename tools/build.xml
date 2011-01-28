@@ -6,7 +6,7 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-view-mediator" />
+	<target name="main" depends="create-signal-command" />
 	 	  
  	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
@@ -83,22 +83,7 @@
 					<token key="year" value="${year}" />
 	            </replacetokens>
 	        </filterchain>
-	    </copy>
-		<echo>Copy ${SwizDAO.control.dir}/SignalsCommand.as</echo>
-				<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
-					  tofile="${project.url}/control/SignalsCommand.as"
-					  overwrite="${overwrite.files}" >
-			        <filterchain>
-			           <replacetokens>
-							<token key="author.name" value="${author.name}" />
-							<token key="author.email" value="${author.email}" />
-							<token key="company.name" value="${company.name}" />
-							<token key="project.name" value="${project.name}" />
-			           		<token key="namespace" value="${namespace}" />
-							<token key="year" value="${year}" />
-			            </replacetokens>
-			        </filterchain>
-			    </copy>
+	    </copy> 
 				
 		<echo>Copy ${SwizDAO.templates.dir}/NativeMessenger.as</echo>
 		<copy file="${SwizDAO.templates.dir}/NativeMessenger.as"
@@ -329,11 +314,26 @@
 		            </replacetokens>
 		        </filterchain>
 		    </copy>
- 
-			<replace file="${project.url}/control/SignalsCommand.as"
+			<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
+					    	tofile="${project.url}/control/${gesture}Command.as" overwrite="${overwrite.files}" >
+					        <filterchain>
+					           <replacetokens>
+										<token key="author.name" value="${author.name}" />
+										<token key="author.email" value="${author.email}" />
+										<token key="company.name" value="${company.name}" />
+										<token key="project.name" value="${project.name}" />
+										<token key="namespace" value="${namespace}" />
+										<token key="year" value="${year}" />
+										<token key="gesture" value="${gesture}" />
+				                    	<token key="view.dir" value="${view.dir}" />
+				        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
+				        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
+					            </replacetokens>
+					        </filterchain>
+					    </copy>
+			<replace file="${project.url}/control/${gesture}Command.as"
 				     token="// todo: add listener"
-				     value="// todo: add listener${line.separator}
-							/**${line.separator}
+				     value="/**${line.separator}
 							 * Whenever an ${gesture}Signal is dispatched.${line.separator}
 							 * MediateSignal initates this ${lowerCaseGesture}Action to perform control Actions${line.separator}
 							 * The invoke functions to perform control functions${line.separator}
@@ -348,6 +348,11 @@
 						     value="// Signals Begin -->${line.separator}
 										&lt;signal:${gesture}Signal/&gt;"
 						     />  
+			<replace file="${project.main.url}/Context.mxml"
+									     token="// Controller Begin -->"
+									     value="// Controller Begin -->${line.separator}
+											&lt;control:${gesture}Command/&gt;"
+									     />  
 		</target> 
 		
 	

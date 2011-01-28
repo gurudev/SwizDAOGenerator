@@ -15,13 +15,13 @@ package @namespace@.control
 	import @namespace@.model.vo.*;
 	import com.adams.swizdao.model.vo.CurrentInstance;
 	
-	public class SignalsCommand
+	public class @gesture@Command
 	{
 		
 		[Inject]
 		public var currentInstance:CurrentInstance; 
 		 
-		public function SignalsCommand()
+		public function @gesture@Command()
 		{
 		}
 		// todo: add listener

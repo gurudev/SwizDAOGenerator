@@ -86,10 +86,9 @@
 			<dao:PagingDAO/>
 		    <!-- DAO End --> 
 			
-			<!-- Controller Begin -->
+			<!-- // Controller Begin -->
 			<vo:CurrentInstance/> 
 			<controller:ServiceController/>
-			<control:SignalsCommand/>
 			<@lowerCaseProject@:BootStrapCommand/>
 			<!-- Controller End --> 
 			
