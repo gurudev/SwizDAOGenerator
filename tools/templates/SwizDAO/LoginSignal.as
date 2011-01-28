@@ -17,7 +17,7 @@ package @namespace@.signal
 	{
 		public function @gesture@Signal()
 		{
-			super();
+			super(Object);
 		}
 	}
 }

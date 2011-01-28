@@ -339,7 +339,7 @@
 							 * The invoke functions to perform control functions${line.separator}
 							 */${line.separator}
 							[MediateSignal(type='${gesture}Signal')]${line.separator}
-							public function ${lowerCaseGesture}Action():void {${line.separator}
+							public function ${lowerCaseGesture}Action(obj:Object):void {${line.separator}
 								${line.separator}
 							}${line.separator}"
 				     /> 
