@@ -15,7 +15,7 @@
 		   xmlns:processor="@namespace@.model.processor.*"  
 		   xmlns:services="org.swizframework.utils.services.*" 
 		   xmlns:mediateview="com.briankotek.mediateview.*" 
-		   xmlns:formprocessors="com.nsdevaraj.swiz.processors.*"
+		   xmlns:signalprocess="com.nsdevaraj.swiz.processors.*"
 		   activate="initializeHandler(event)" xmlns:util="@namespace@.util.*" 
 		   xmlns:@lowerCaseProject@="@namespace@.*" xmlns:service="@namespace@.service.*"
 		   xmlns:control="@namespace@.control.*" xmlns:signal="@namespace@.signal.*">
@@ -54,10 +54,9 @@
 	</Swiz:config>
 	
 	<Swiz:customProcessors>
-		<processors:MediateSignalProcessor id="signalProcessor" signalPackages="{['com.adams.swizdao.signals','@namespace@.signal']}" strictArgumentTypes="true"/>		
+		<processors:MediateSignalProcessor id="signalProcessor" signalPackages="{['com.adams.swizdao.signals']}" strictArgumentTypes="true"/>		
  		<mediateview:MediateViewProcessor/>
-		<formprocessors:FormProcessor/>
-		<formprocessors:RandomProcessor/>
+		<signalprocess:SignalsProcessor strictArgumentTypes="true" signalPackages='@namespace@.signal'/>
 	</Swiz:customProcessors>
 	
 	<Swiz:beanProviders> 
@@ -68,7 +67,7 @@
 			<services:ServiceHelper swiz="{ this }" />
 			<!-- Service End -->
 			
-			<!-- // Signals Begin -->
+			<signal:ControlSignal/>
 			<signals:AbstractSignal/>
 			<signals:ResultSignal/>
 			<signals:PushRefreshSignal/>
