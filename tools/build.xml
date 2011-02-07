@@ -6,8 +6,8 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-signal-command" />
-	 	  
+	<target name="main" depends="create-signal-command" /> 
+	 
  	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
 		<echo>${log.create.SwizDAO.directories.message}</echo>
@@ -313,6 +313,7 @@
 		    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
 		    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
 			<convertToCamelCase property="camelCaseGesture" value="${gesture}" />
+			<Params property="parameters" value="${variables}" />
 			<!-- 
 			<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
 					    	tofile="${project.url}/control/${gesture}Command.as" overwrite="${overwrite.files}" >
@@ -390,5 +391,22 @@
 		<attribute name="property" />
 		project.setNewProperty( attributes.get("property"), "\t");
 	</scriptdef>
-
+	<scriptdef name="Params" language="javascript">
+	 	<attribute name="property" />
+	 	<attribute name="value"    />
+	    <![CDATA[
+ 		val = attributes.get("value");
+ 		var tempArray = val.split(',').sort();
+ 		var resArray =[]
+	 	for (var i = 0; i < tempArray.length; i++) { 
+ 			var tempArray2 = tempArray[i].split(':').sort();
+ 			for (var j = 0; j < tempArray2.length; j++) {
+ 				resArray.push(tempArray2[j])
+ 				j++
+ 			}
+ 		}
+ 		self.log(resArray.join(','))
+ 		project.setNewProperty( attributes.get("property"), resArray.join(','));
+	    ]]>
+	</scriptdef>
 </project>
