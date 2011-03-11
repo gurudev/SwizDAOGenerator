@@ -20,5 +20,6 @@ package @namespace@.signal
 	public class ControlSignal
 	{
 		// add Signal 
+		public var changeStateSignal:Signal= new Signal(String);
 	}
 }

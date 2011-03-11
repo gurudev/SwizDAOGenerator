@@ -13,6 +13,7 @@ package @namespace@.control
 {
 	import @namespace@.model.AbstractDAO;
 	import @namespace@.model.vo.*;
+	import @namespace@.view.mediators.MainViewMediator;
 	import com.adams.swizdao.util.Action;
 	import com.adams.swizdao.model.vo.SignalVO;
 	import com.adams.swizdao.model.vo.CurrentInstance;
@@ -25,12 +26,22 @@ package @namespace@.control
 		
 		[Inject]
 		public var controlSignal:ControlSignal;
+		
+		[Inject]
+		public var mainViewMediator:MainViewMediator;
+		
 		[Inject]
 		public var currentInstance:CurrentInstance; 
 		 
-		public function SignalsCommand()
-		{
-		}
 		// todo: add listener
+		/**
+		 * Whenever an ChangeStateSignal is dispatched.
+		 * MediateSignal initates this changestateAction to perform control Actions
+		 * The invoke functions to perform control functions
+		 */
+		[ControlSignal(type='changeStateSignal')]
+		public function changestateAction(state:String):void {
+			mainViewMediator.view.currentState = state;
+		}
 	}
 }

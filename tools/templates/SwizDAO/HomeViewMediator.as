@@ -28,7 +28,7 @@ package @namespace@.@view.dir@.mediators
 	import com.adams.swizdao.views.mediators.AbstractViewMediator;
 	
 	import flash.events.Event;
-	
+	import flash.events.MouseEvent;
 	
 
 	public class @gesture@ViewMediator extends AbstractViewMediator
