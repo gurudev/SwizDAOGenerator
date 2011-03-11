@@ -11,7 +11,7 @@
 		   xmlns:processors="com.foomonger.swizframework.processors.*"
 		   xmlns:controller="com.adams.swizdao.controller.*"
 		   xmlns:storage="org.swizframework.storage.*" 
-		   xmlns:mediators="@namespace@.@view.dir@.mediators.*"
+		   xmlns:mediators="@namespace@.view.mediators.*"
 		   xmlns:processor="@namespace@.model.processor.*"  
 		   xmlns:services="org.swizframework.utils.services.*" 
 		   xmlns:mediateview="com.briankotek.mediateview.*" 
@@ -86,11 +86,12 @@
 		    <!-- DAO End --> 
 			
 			<!-- // Controller Begin -->
+			<control:SignalsCommand/>
 			<vo:CurrentInstance/> 
 			<controller:ServiceController/>
 			<@lowerCaseProject@:BootStrapCommand/>
 			<!-- Controller End --> 
-			
+			<mediators:MainViewMediator id='mainview' skinClass='@namespace@.view.MainSkinView' width='100%' height='100%'/>
 		</swiz:BeanProvider>
 	</Swiz:beanProviders>
 </Swiz:Swiz>

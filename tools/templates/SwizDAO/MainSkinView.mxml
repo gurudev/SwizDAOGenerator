@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark"
+		xmlns:mediators="@namespace@.view.mediators.*" >	
+	<fx:Metadata>
+		[HostComponent("@namespace@.view.mediators.MainViewMediator")]
+	</fx:Metadata>   
+	<s:states>
+		<!-- // State Begin --> 
+		<!-- State End -->  
+	</s:states> 
+	<!-- // View Begin -->
+	<!-- View End -->  
+</s:Skin>

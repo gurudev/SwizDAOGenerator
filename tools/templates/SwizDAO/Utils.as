@@ -20,7 +20,7 @@ package @namespace@.util
 	public class Utils
 	{  	  
 		// todo: add view index
-		 
+		public static const MAIN_INDEX:String='Main';
 		// todo: add key
 		 
 		// todo: add dao

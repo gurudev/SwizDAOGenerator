@@ -17,9 +17,10 @@ package @namespace@.control
 	import com.adams.swizdao.model.vo.SignalVO;
 	import com.adams.swizdao.model.vo.CurrentInstance;
 	import com.adams.swizdao.response.SignalSequence;
-	
+	import com.adams.swizdao.views.mediators.IViewMediator;
+
 	import @namespace@.signal.ControlSignal;
-	public class @gesture@Command
+	public class SignalsCommand
 	{
 		
 		[Inject]
@@ -27,7 +28,7 @@ package @namespace@.control
 		[Inject]
 		public var currentInstance:CurrentInstance; 
 		 
-		public function @gesture@Command()
+		public function SignalsCommand()
 		{
 		}
 		// todo: add listener

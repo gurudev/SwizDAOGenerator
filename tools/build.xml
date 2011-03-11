@@ -6,7 +6,7 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-signal-command" /> 
+	<target name="main" depends="create-SwizDAO" /> 
 	 
  	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
@@ -101,6 +101,52 @@
 	        </filterchain>
 	    </copy>
 		
+		<echo>Copy ${SwizDAO.templates.dir}/MainSkinView.mxml</echo>
+				<copy file="${SwizDAO.templates.dir}/MainSkinView.mxml"
+					  tofile="${project.url}/view/MainSkinView.mxml"
+					  overwrite="${overwrite.files}" >
+			        <filterchain>
+			           <replacetokens> 
+			           		<token key="namespace" value="${namespace}" /> 
+			            </replacetokens>
+			        </filterchain>
+			    </copy>
+		
+	  <copy file="${SwizDAO.templates.dir}/HomeViewMediator.as"
+		    	tofile="${project.url}/${view.dir}/mediators/MainViewMediator.as" overwrite="${true}" >
+		        <filterchain>
+		           <replacetokens>
+							<token key="author.name" value="${author.name}" />
+							<token key="author.email" value="${author.email}" />
+							<token key="company.name" value="${company.name}" />
+							<token key="project.name" value="${project.name}" />
+							<token key="namespace" value="${namespace}" />
+							<token key="year" value="${year}" />
+							<token key="gesture" value="Main" />
+	                    	<token key="view.dir" value="${view.dir}" />
+		           			<token key="upperCaseGesture" value="MAIN" />
+	        	           	<token key="lowerCaseGesture" value="main" />
+		            </replacetokens>
+		        </filterchain>
+		    </copy>
+					 
+		<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
+				    	tofile="${project.url}/control/SignalsCommand.as" overwrite="${overwrite.files}" >
+				        <filterchain>
+				           <replacetokens>
+									<token key="author.name" value="${author.name}" />
+									<token key="author.email" value="${author.email}" />
+									<token key="company.name" value="${company.name}" />
+									<token key="project.name" value="${project.name}" />
+									<token key="namespace" value="${namespace}" />
+									<token key="year" value="${year}" />
+									<token key="gesture" value="${gesture}" />
+			                    	<token key="view.dir" value="${view.dir}" />
+			        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
+			        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
+				            </replacetokens>
+				        </filterchain>
+				    </copy>  
 		<echo>Copy ${SwizDAO.templates.dir}/AbstractDAO.as</echo>
 		<copy file="${SwizDAO.templates.dir}/AbstractDAO.as"
 			  tofile="${project.url}/${model.dir}/AbstractDAO.as"
@@ -257,7 +303,7 @@
 	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
 
 	    <copy file="${SwizDAO.templates.dir}/HomeViewMediator.as"
-	    	tofile="${project.url}/${view.dir}/mediators/${gesture}ViewMediator.as" overwrite="${overwrite.files}" >
+	    	tofile="${project.url}/${view.dir}/mediators/${gesture}ViewMediator.as" overwrite="${true}" >
 	        <filterchain>
 	           <replacetokens>
 						<token key="author.name" value="${author.name}" />
@@ -294,7 +340,7 @@
 			     value="// todo: add dao${line.separator}
 						public static const ${upperCaseGesture}_INDEX:String='${gesture}';"
 			     /> 
-		<replace file="${project.main.url}/${project.dir}.mxml"
+		<replace file="${project.url}/view/MainSkinView.mxml"
 					     token="// View Begin -->"
 					     value="// View Begin -->${line.separator}
 			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' includeIn='${gesture}' width='100%' height='100%'/&gt;"
@@ -308,31 +354,14 @@
 	
 	<!-- create signal-command class -->
 		<target name="create-signal-command" >
-			<echo>${log.view.mediator.message}</echo>
+			<echo>${log.signal.command.message}</echo>
 
 		    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
 		    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
 			<convertToCamelCase property="camelCaseGesture" value="${gesture}" />
 			<Params property="parameters" value="${variables}" />
-			<!-- 
-			<copy file="${SwizDAO.templates.dir}/SignalsCommand.as"
-					    	tofile="${project.url}/control/${gesture}Command.as" overwrite="${overwrite.files}" >
-					        <filterchain>
-					           <replacetokens>
-										<token key="author.name" value="${author.name}" />
-										<token key="author.email" value="${author.email}" />
-										<token key="company.name" value="${company.name}" />
-										<token key="project.name" value="${project.name}" />
-										<token key="namespace" value="${namespace}" />
-										<token key="year" value="${year}" />
-										<token key="gesture" value="${gesture}" />
-				                    	<token key="view.dir" value="${view.dir}" />
-				        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
-				        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
-					            </replacetokens>
-					        </filterchain>
-					    </copy> -->
-			<replace file="${project.url}/control/ChangeStateCommand.as"
+			
+			<replace file="${project.url}/control/SignalsCommand.as"
 				     token="// todo: add listener"
 				     value="// todo: add listener${line.separator}
 							/**${line.separator}
@@ -349,12 +378,7 @@
 						     token="// add Signal "
 						     value="// add Signal ${line.separator}
 							public var ${camelCaseGesture}Signal:Signal= new Signal(IViewMediator,${parameters});"
-						     />  
-		<!--	<replace file="${project.main.url}/Context.mxml"
-									     token="// Controller Begin "
-									     value="// Controller Begin ${line.separator}
-											&lt;control:${gesture}Command/&gt;"
-									     />  -->
+						     />   
 		</target> 
 		
 	

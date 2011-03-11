@@ -15,6 +15,7 @@ package @namespace@.@view.dir@.mediators
 	import @namespace@.model.vo.*;
 	import @namespace@.util.Utils;
 	import @namespace@.@view.dir@.@gesture@SkinView;
+	import @namespace@.signal.ControlSignal;
 	
 	import com.adams.swizdao.dao.PagingDAO;
 	import com.adams.swizdao.model.vo.*;
@@ -35,6 +36,25 @@ package @namespace@.@view.dir@.mediators
 		
 		[Inject]
 		public var currentInstance:CurrentInstance; 
+		
+		[Inject]
+		public var controlSignal:ControlSignal;
+		
+		private var _homeState:String;
+		public function get homeState():String
+		{
+			return _homeState;
+		}
+		
+		public function set homeState(value:String):void
+		{
+			_homeState = value;
+			if(value==Utils.@upperCaseGesture@_INDEX) addEventListener(Event.ADDED_TO_STAGE,addedtoStage);
+		}
+		
+		protected function addedtoStage(ev:Event):void{
+			init();
+		}
 		     
 		/**
 		 * Constructor.
