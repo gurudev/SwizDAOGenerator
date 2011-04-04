@@ -54,11 +54,11 @@
 	</Swiz:config>
 	
 	<Swiz:customProcessors>
-		<processors:MediateSignalProcessor id="signalProcessor" signalPackages="{['com.adams.swizdao.signals']}" strictArgumentTypes="true"/>		
- 		<mediateview:MediateViewProcessor/>
+		<mediateview:MediateViewProcessor/>		
 		<signalprocess:SignalsProcessor strictArgumentTypes="true" signalPackages='@namespace@.signal'/>
+		<signalprocess:MediateSignalProcessor signalPackages="{['com.adams.swizdao.signals']}" strictArgumentTypes="true"/>
 	</Swiz:customProcessors>
-	
+	 
 	<Swiz:beanProviders> 
 		<swiz:BeanProvider>
 			

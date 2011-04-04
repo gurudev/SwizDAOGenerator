@@ -6,7 +6,7 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-view-mediator" /> 
+	<target name="main" depends="create-SwizDAO" /> 
 	 
  	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
