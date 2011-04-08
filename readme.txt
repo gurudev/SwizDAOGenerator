@@ -1,3 +1,41 @@
+Categories  
+Columns 
+Companies 
+DefaultTemplate 
+DefaultTemplateValue 
+DomainWorkflow 
+Events  
+EventStatus 
+FileDetails  
+GroupPersons  
+Groups 
+LangEntries 
+Phases 
+Persons 
+PhaseStatus 
+Phasestemplates 
+Presetstemplates 
+ProfileModules 
+Profiles 
+Projects 
+ProjectStatus 
+Propertiespj 
+Propertiespresets 
+Proppresetstemplates 
+ReportColumns 
+Reports 
+Status 
+StatusTypes 
+Tags 
+Tasks 
+TaskStatus
+Teamlines
+Teamlinestemplates
+TeamTemplates
+Workflows 
+Workflowstemplates  
+
+
 Lightweight Ant script extensions generator for SwizDAO implementation of MVCs by @EladElrom
 
 Features:
@@ -10,15 +48,15 @@ Features:
 
 In case you are running into errors:
 You need to ensure you copy the following plugins:
-Copy to [eclipse-directory]/plugins
+Copy to [eclipsedirectory]/plugins
 
-    * BSF - http://jakarta.apache.org/site/downloads/downloads_bsf.cgi
-    * Rhino - http://www.mozilla.org/rhino/download.html
+    * BSF  http://jakarta.apache.org/site/downloads/downloads_bsf.cgi
+    * Rhino  http://www.mozilla.org/rhino/download.html
 
 After you add the jars you will need to do the following step:
 
 Flash Builder>Preferences>Ant>Runtime>Classpath,
-�Ant Home Entries� > �Add External JARs� - point to jar files for:
+�Ant Home Entries� > �Add External JARs�  point to jar files for:
 
     * bsf
     * rhino

@@ -6,9 +6,9 @@
 	<property file="project.properties" />
 	<property file="config/SwizDAOGenerator.properties" />
 	<property file="config/log.properties" />
-	<target name="main" depends="create-view-mediator" /> 
+	<target name="main" depends="create-signal-command-variable" /> 
 	 
- 	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command-->
+ 	<!-- create-SwizDAO,create-value-object,create-view-mediator,create-signal-command,create-signal-command-variable-->
 	<target name="create-SwizDAO" depends="create-main-class-context-and-base-service,move-libraries-and-source-code">
 		<echo>${log.create.SwizDAO.directories.message}</echo>
         <mkdir dir="${project.url}/${model.dir}" />
@@ -354,7 +354,7 @@
 	</target> 
 	
 	<!-- create signal-command class -->
-		<target name="create-signal-command" >
+		<target name="create-signal-command-variable" >
 			<echo>${log.signal.command.message}</echo>
 
 		    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
@@ -381,7 +381,32 @@
 							public var ${camelCaseGesture}Signal:Signal= new Signal(IViewMediator,${parameters});"
 						     />   
 		</target> 
-		
+	<target name="create-signal-command" >
+				<echo>${log.signal.command.message}</echo>
+
+			    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
+			    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
+				<convertToCamelCase property="camelCaseGesture" value="${gesture}" />
+				
+				<replace file="${project.url}/control/SignalsCommand.as"
+					     token="// todo: add listener"
+					     value="// todo: add listener${line.separator}
+								/**${line.separator}
+								 * Whenever an ${gesture}Signal is dispatched.${line.separator}
+								 * MediateSignal initates this ${lowerCaseGesture}Action to perform control Actions${line.separator}
+								 * The invoke functions to perform control functions${line.separator}
+								 */${line.separator}
+								[ControlSignal(type='${camelCaseGesture}Signal')]${line.separator}
+								public function ${lowerCaseGesture}Action(obj:IViewMediator):void {${line.separator}
+									${line.separator}
+								}${line.separator}"
+					     /> 
+				<replace file="${project.url}/signal/ControlSignal.as"
+							     token="// add Signal "
+							     value="// add Signal ${line.separator}
+								public var ${camelCaseGesture}Signal:Signal= new Signal(IViewMediator);"
+							     />   
+			</target>
 	
     <!-- private -->
 	<scriptdef name="convertToUpperCase" language="javascript" >
@@ -421,12 +446,12 @@
 	 	<attribute name="value"    />
 	    <![CDATA[
  		val = attributes.get("value");
- 		var tempArray = val.split(',').sort();
+ 		var tempArray = val.split(',');
  		var resArray =[]
 	 	for (var i = 0; i < tempArray.length; i++) { 
- 			var tempArray2 = tempArray[i].split(':').sort();
+ 			var tempArray2 = tempArray[i].split(':');
  			for (var j = 0; j < tempArray2.length; j++) {
- 				resArray.push(tempArray2[j])
+ 				resArray.push(tempArray2[1])
  				j++
  			}
  		}
