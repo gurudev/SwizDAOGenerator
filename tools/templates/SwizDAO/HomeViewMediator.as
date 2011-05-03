@@ -111,17 +111,6 @@ package @namespace@.@view.dir@.mediators
 		 */
 		override protected function cleanup( event:Event ):void {
 			super.cleanup( event ); 		
-		}
-		//@TODO
-
-		/**
-		 * initiates cleanup view, of this view. manages stage resize, minimize or maximize event 
-		 * as removed from stage event should not be called on these system events
-		 */		
-		override protected function gcCleanup( event:Event ):void {
-			if( viewState != Utils.@upperCaseGesture@_INDEX ) {
-				cleanup( event );	
-			}
-		}
+		} 
 	}
 }
