@@ -16,7 +16,6 @@
 		<mkdir dir="${project.url}/${model.dir}/${processor.dir}" />
 		<mkdir dir="${project.url}/${model.dir}/${vo.dir}" />
 		<mkdir dir="${project.url}/service" />
-		<mkdir dir="${project.url}/util" />
 		<mkdir dir="${project.url}/${view.dir}" />
 		<mkdir dir="${project.url}/${view.dir}/${mediators.dir}" />
 		<mkdir dir="${project.url}/${view.dir}/${renderers.dir}" />
@@ -344,7 +343,7 @@
 		<replace file="${project.url}/view/MainSkinView.mxml"
 					     token="// View Begin -->"
 					     value="// View Begin -->${line.separator}
-			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' includeIn='${gesture}' width='100%' height='100%'/&gt;"
+			&lt;mediators:${gesture}ViewMediator id='${lowerCaseGesture}' skinClass='${namespace}.${view.dir}.${gesture}SkinView' homeState='{currentState}' includeIn='${gesture}' width='100%' height='100%'/&gt;"
 					     />  
 		<replace file="${project.url}/view/MainSkinView.mxml"
 							     token="// State Begin -->"

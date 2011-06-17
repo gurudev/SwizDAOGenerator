@@ -38,7 +38,6 @@ package @namespace@.model
 		[Inject]
 		public var signalSeq:SignalSequence;
 		
-		protected var voClazz:Class;
 		private var _daoName:String;
 		/**
 		 * Whenever an AbstractSignal is dispatched.
